@@ -21,7 +21,7 @@ export default function Footer() {
         <div>
           <h4>Informasi</h4>
           <ul>
-            <li><Link to="/kabar-terbaru">Promo</Link></li>
+            <li><Link to="/kabar-terbaru">Promo &amp; Kabar</Link></li>
             <li><Link to="/kontak-kami">Kontak</Link></li>
           </ul>
         </div>

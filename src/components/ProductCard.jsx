@@ -22,7 +22,7 @@ export default function ProductCard({ product, index = 0, columns = 4 }) {
       </button>
       <Link to={`/produk/${product.slug}`} className="pcard__body">
         <span className="pcard__name">{product.name}</span>
-        <span className="pcard__meta">{product.karat ? `${product.karat} · ` : ''}Harga ikut pasar</span>
+        <span className="pcard__meta">{[product.karat, product.stone, product.custom && 'Pesanan'].filter(Boolean).join(' · ')}</span>
       </Link>
     </Reveal>
   )

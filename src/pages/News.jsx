@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { POSTS, formatDate } from '../data.js'
+import { POSTS, formatDate, isEnded } from '../data.js'
 import Reveal from '../components/Reveal.jsx'
+import PostModal from '../components/PostModal.jsx'
 
 const TAGS = ['Semua', ...new Set(POSTS.map((p) => p.tag))]
 
@@ -21,6 +22,7 @@ function useColumnCount() {
 
 export default function News() {
   const [tag, setTag] = useState('Semua')
+  const [open, setOpen] = useState(null)
   const count = useColumnCount()
   const list = tag === 'Semua' ? POSTS : POSTS.filter((p) => p.tag === tag)
 
@@ -29,7 +31,7 @@ export default function News() {
 
   return (
     <div className="container page">
-      <nav className="crumbs"><Link to="/">Beranda</Link> / Promo</nav>
+      <nav className="crumbs"><Link to="/">Beranda</Link> / Promo &amp; Kabar</nav>
       <h1 className="page__title">Promo & Kabar</h1>
       <p className="page__lead">Promo, undian berhadiah, dan tulisan seputar emas dari Toko Mas Complete Mulia.</p>
 
@@ -45,22 +47,25 @@ export default function News() {
           <div key={c} className="masonry__col">
             {col.map((post, r) => (
               <Reveal key={post.href} delay={c * 90 + r * 60}>
-                <a href={post.href} target="_blank" rel="noreferrer" className="mcard">
+                <button type="button" className={`mcard ${isEnded(post) ? 'is-ended' : ''}`} onClick={() => setOpen(post)}>
                   <div className="mcard__img"><img src={post.image} alt="" loading="lazy" /></div>
                   <div className="mcard__body">
                     <div className="mcard__meta">
                       <span className="mcard__tag">{post.tag}</span>
                       <time>{formatDate(post.date)}</time>
+                      {isEnded(post) && <span className="ended">Sudah berakhir</span>}
                     </div>
                     <h3>{post.title}</h3>
                     <p>{post.excerpt}</p>
                   </div>
-                </a>
+                </button>
               </Reveal>
             ))}
           </div>
         ))}
       </div>
+
+      {open && <PostModal key={open.href} post={open} onClose={() => setOpen(null)} />}
     </div>
   )
 }

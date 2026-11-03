@@ -25,8 +25,9 @@ export function WishlistProvider({ children }) {
   const toggle = (slug) =>
     setItems((prev) => (prev.includes(slug) ? prev.filter((s) => s !== slug) : [...prev, slug]))
   const has = (slug) => items.includes(slug)
+  const clear = () => setItems([])
 
-  return <WishlistContext.Provider value={{ items, toggle, has }}>{children}</WishlistContext.Provider>
+  return <WishlistContext.Provider value={{ items, toggle, has, clear }}>{children}</WishlistContext.Provider>
 }
 
 export const useWishlist = () => useContext(WishlistContext)

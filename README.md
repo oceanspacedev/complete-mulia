@@ -27,3 +27,7 @@ Hasilnya ada di folder `dist/`.
 - `src/styles.css` — semua gaya; warna mengikuti completemulia.co.id (#EBC71A dan #2F1A37).
 
 Foto produk dan banner masih diambil dari server completemulia.co.id.
+
+## Kredit
+
+Model tangan 3D (`public/models/right-hand.glb`) berasal dari [WebXR Input Profiles](https://github.com/immersive-web/webxr-input-profiles) (profil `generic-hand`), dengan lisensi [W3C Software and Document License](https://www.w3.org/Consortium/Legal/copyright-software). Keterangan lengkap ada di `public/models/LICENSE-right-hand.txt`.

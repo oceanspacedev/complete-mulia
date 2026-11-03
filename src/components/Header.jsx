@@ -7,7 +7,7 @@ import { Close, Heart, Menu, Search, WhatsApp } from './Icons.jsx'
 const MENU = [
   { to: '/', label: 'Beranda' },
   { to: '/koleksi', label: 'Produk' },
-  { to: '/kabar-terbaru', label: 'Promo' },
+  { to: '/kabar-terbaru', label: 'Promo & Kabar' },
   { to: '/kontak-kami', label: 'Kontak' },
 ]
 
